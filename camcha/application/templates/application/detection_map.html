@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>캠차 탐지 지도</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=BR56NxCjsDHKMVGf0WyJ"></script>
+</head>
+<body>
+<div id="map" style="width:700px;height:400px;"></div>
+
+
+
+
+<script>
+    // draw map
+    var mapOptions = {
+    center: new naver.maps.LatLng(37.5036557,127.0441149),
+    zoom: 10
+    };
+
+    var map = new naver.maps.Map('map', mapOptions);
+
+
+
+
+</script>
+</body>
+</html>
+<script type="text/javascript">
+    var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(37.5036557,127.0441149),
+    map: map
+    });
+</script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>&quot;
+<script type="text/javascript">
+    $.ajax({
+        type: 'get',
+        url: 'http://localhost:8000/detections/?format=json',
+        datatype : 'json',
+
+        success: function(data) {
+            for(var i in data){
+                console.log(i);
+                var lat = data[i]['lat'];
+                var lng = data[i]['lng'];
+                var marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(lat,lng),
+                map: map
+                });
+            }
+            console.log(data);
+        }
+
+    })
+</script>

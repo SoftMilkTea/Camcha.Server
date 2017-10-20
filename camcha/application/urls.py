@@ -9,7 +9,9 @@ urlpatterns = [
     url(r'^detections/(?P<pk>[0-9]+)/$',
         views.DetectionDetail.as_view(),
         name='detection-detail'),
-    url(r'$',views.api_root),
-]
+    url(r'^$',views.api_root),
+
+    url(r'^detection_map/$',views.detection_map),  # 지도
+    ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
