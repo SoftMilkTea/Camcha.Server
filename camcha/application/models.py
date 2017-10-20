@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Detection(models.Model):
-    
+
     dont_report= 'dont_report'
     report_by_text = 'text'
     report_by_call = 'call'
@@ -29,5 +29,7 @@ class Detection(models.Model):
     class Meta:
         ordering = ('created',)
 
+    def __str__(self):
+        return str(self.id)
 
 
