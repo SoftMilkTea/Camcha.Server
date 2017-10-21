@@ -32,4 +32,8 @@ class Detection(models.Model):
     def __str__(self):
         return str(self.id)
 
+    def save(self, *args, **kwargs):
+        print(self.lng,self.lat)
+        super(Detection, self).save(*args, **kwargs)
+
 
